@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BoardingHub | Find Your Perfect Boarding</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="#" class="logo">
+            <i class="fa-solid fa-house"></i>
+            Boarding<span>Hub</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#listings">Find Boarding</a>
+            <a href="#add-boarding">Add Boarding</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-location-dot"></i>
+                Find your home away from home
+            </span>
+
+            <h1>
+                Find the perfect
+                <span>boarding place</span>
+                near you.
+            </h1>
+
+            <p>
+                Discover affordable and comfortable boarding places
+                for students and working professionals.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH BOX -->
+
+        <div class="search-box">
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <div>
+                    <label>Location</label>
+
+                    <select id="locationFilter">
+                        <option value="all">Any Location</option>
+                        <option value="Moratuwa">Moratuwa</option>
+                        <option value="Katubedda">Katubedda</option>
+                        <option value="Dehiwala">Dehiwala</option>
+                        <option value="Mount Lavinia">Mount Lavinia</option>
+                        <option value="Colombo">Colombo</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                <div>
+                    <label>Maximum Price</label>
+
+                    <select id="priceFilter">
+                        <option value="all">Any Price</option>
+                        <option value="10000">Under Rs. 10,000</option>
+                        <option value="15000">Under Rs. 15,000</option>
+                        <option value="20000">Under Rs. 20,000</option>
+                        <option value="25000">Under Rs. 25,000</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-users"></i>
+
+                <div>
+                    <label>People</label>
+
+                    <select id="peopleFilter">
+                        <option value="all">Any</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4+ People</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <button class="search-btn" onclick="filterBoardings()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-house"></i>
+        </div>
+
+        <div>
+            <h3>Many Boarding Options</h3>
+            <p>Find places suitable for your budget.</p>
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+            <h3>Easy & Convenient</h3>
+            <p>Search and compare boarding places.</p>
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            <i class="fa-solid fa-phone"></i>
+        </div>
+
+        <div>
+            <h3>Contact Owners</h3>
+            <p>Contact boarding owners directly.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LISTINGS ================= -->
+
+<section class="listings-section" id="listings">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">EXPLORE</span>
+
+            <h2>Available Boardings</h2>
+
+            <p>
+                Find a comfortable place that fits your lifestyle.
+            </p>
+        </div>
+
+        <button class="clear-btn" onclick="clearFilters()">
+            <i class="fa-solid fa-rotate-left"></i>
+            Clear Filters
+        </button>
+
+    </div>
+
+
+    <div id="boardingGrid" class="boarding-grid">
+
+        <!-- JavaScript will load boarding cards here -->
+
+    </div>
+
+
+    <div id="noResults" class="no-results">
+
+        <i class="fa-solid fa-house-circle-xmark"></i>
+
+        <h3>No boarding places found</h3>
+
+        <p>Try changing your search filters.</p>
+
+        <button onclick="clearFilters()">
+            Show All Boardings
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ADD BOARDING ================= -->
+
+<section class="add-section" id="add-boarding">
+
+    <div class="add-container">
+
+        <div class="add-info">
+
+            <span class="section-label">FOR OWNERS</span>
+
+            <h2>Have a boarding place?</h2>
+
+            <p>
+                List your boarding place and reach students and
+                working professionals looking for accommodation.
+            </p>
+
+            <div class="add-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                Free listing
+            </div>
+
+            <div class="add-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                Easy to manage
+            </div>
+
+            <div class="add-benefit">
+                <i class="fa-solid fa-circle-check"></i>
+                Direct contact with renters
+            </div>
+
+        </div>
+
+
+        <form id="boardingForm" class="boarding-form">
+
+            <h3>Add Your Boarding</h3>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Boarding Name</label>
+                    <input
+                        type="text"
+                        id="boardingName"
+                        placeholder="Example: Cozy Student Boarding"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+
+                    <select id="boardingLocation" required>
+
+                        <option value="">Select Location</option>
+                        <option value="Moratuwa">Moratuwa</option>
+                        <option value="Katubedda">Katubedda</option>
+                        <option value="Dehiwala">Dehiwala</option>
+                        <option value="Mount Lavinia">Mount Lavinia</option>
+                        <option value="Colombo">Colombo</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Monthly Price (Rs.)</label>
+
+                    <input
+                        type="number"
+                        id="boardingPrice"
+                        placeholder="15000"
+                        min="1"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Available People</label>
+
+                    <input
+                        type="number"
+                        id="boardingPeople"
+                        placeholder="2"
+                        min="1"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Contact Number</label>
+
+                <input
+                    type="tel"
+                    id="boardingContact"
+                    placeholder="07XXXXXXXX"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Image URL</label>
+
+                <input
+                    type="url"
+                    id="boardingImage"
+                    placeholder="https://example.com/image.jpg">
+
+                <small>
+                    Optional. Leave empty to use the default image.
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Description</label>
+
+                <textarea
+                    id="boardingDescription"
+                    rows="4"
+                    placeholder="Describe your boarding place..."
+                    required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Facilities</label>
+
+                <div class="checkboxes">
+
+                    <label>
+                        <input type="checkbox" value="Wi-Fi" class="facility">
+                        Wi-Fi
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="Kitchen" class="facility">
+                        Kitchen
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="Parking" class="facility">
+                        Parking
+                    </label>
+
+                    <label>
+                        <input type="checkbox" value="AC" class="facility">
+                        AC
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="submit-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Boarding
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section" id="about">
+
+    <div class="about-container">
+
+        <div class="about-icon">
+            <i class="fa-solid fa-house-user"></i>
+        </div>
+
+        <div>
+
+            <span class="section-label">ABOUT BOARDINGHUB</span>
+
+            <h2>Making accommodation searching easier.</h2>
+
+            <p>
+                BoardingHub is a simple platform designed to help students
+                and working professionals find affordable boarding places
+                without wasting time.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <a href="#" class="logo">
+                <i class="fa-solid fa-house"></i>
+                Boarding<span>Hub</span>
+            </a>
+
+            <p>
+                Find your perfect boarding place.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+            <a href="#listings">Find Boarding</a>
+            <a href="#add-boarding">Add Boarding</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 BoardingHub. Made for students and renters.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= MODAL ================= -->
+
+<div id="detailsModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <img id="modalImage" src="" alt="Boarding">
+
+        <div class="modal-body">
+
+            <span id="modalLocation" class="modal-location"></span>
+
+            <h2 id="modalName"></h2>
+
+            <div class="modal-price" id="modalPrice"></div>
+
+            <p id="modalDescription"></p>
+
+            <div id="modalFacilities" class="modal-facilities"></div>
+
+            <div class="contact-box">
+
+                <div>
+                    <small>Contact Owner</small>
+                    <strong id="modalContact"></strong>
+                </div>
+
+                <a id="callButton" href="#" class="call-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Call Owner
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
